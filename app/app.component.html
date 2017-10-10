@@ -1,2 +1,72 @@
-     <router-outlet></router-outlet>
+<header class="b-header">
+    <div class="container">
+        <div class="burger-wrap">
+            <div class="burger"></div>
+        </div>
+        <!-- BEGIN: Custom advanced (www.pluginaria.com) --><a class="logo" [routerLink]="'/'"></a><!-- END: Custom advanced (www.pluginaria.com) -->
+        <div class="header-content">
+            <div class="header-top">
+                <!-- BEGIN: Custom advanced (www.pluginaria.com) --> <div class="header-contact-item phone">
+                <div class="header-contact-title">Наш телефон:</div>
+                <div class="header-contact-info"><a class="header-link" href="tel:+79853117271"><span class="header-link-text">+7 (985) 311-72-71</span></a></div>
+            </div>
+                <div class="header-contact-item email">
+                    <div class="header-contact-title">Наша почта:</div>
+                    <div class="header-contact-info"><a class="header-link" href="mailto:info@myperfectenglish.ru">info@myperfectenglish.ru</a></div>
+                </div><!-- END: Custom advanced (www.pluginaria.com) -->
+                <div class="header-socials">
+                    <a class="social-link" href="https://vk.com/my_perfect_english"><img class="social-img" src="/templates/myperfcetenglish/img/vk.png" alt=""/></a>
+                    <a class="social-link" style="margin-top: 1px"href="https://www.instagram.com/mp_english/"><img class="social-img" src="/templates/myperfcetenglish/img/inst.png" alt=""/></a>
+                    <a class="social-link" href="https://www.facebook.com/tatiana.lyubisheva"><img class="social-img" src="/templates/myperfcetenglish/img/facebook.png" alt=""/></a>
+
+
+
+                </div>
+                <button class="btn red-btn">Заказать звонок</button>
+            </div>
+
+            <nav class="main-menu">
+                <app-mainmenu></app-mainmenu>
+                <div class="header-contact-item phone phone-menu">
+                    <div class="header-contact-title">Наш телефон:</div>
+                    <div class="header-contact-info"><a class="header-link" href="tel:+7963333112"><span class="header-link-text">+7 (963) 333-11-22</span></a></div>
+                </div>
+            </nav>
+            <!--nav class="main-menu">
+                <ul class="main-menu-list">
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">Отзывы</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">РКИ</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">Английский язык</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">О преподавателе</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">Услуги</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">Английский марафон</a>
+                    </li>
+                    <li class="main-menu-list-item">
+                        <a class="main-menu-link" href="#">Контакты</a>
+                    </li>
+                    <div class="header-contact-item phone phone-menu">
+                        <div class="header-contact-title">Наш телефон:</div>
+                        <div class="header-contact-info"><a class="header-link" href="tel:+7963333112"><span class="header-link-text">+7 (963) 333-11-22</span></a></div>
+                    </div>
+                </ul>
+            </nav-->
+        </div>
+    </div>
+</header>
+
+
+
+
+<router-outlet></router-outlet>
 

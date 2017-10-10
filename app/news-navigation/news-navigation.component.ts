@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {AJAXService} from '../ajax.service';
+import { Component, ViewChild, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import {AJAXService} from '../services/ajax.service';
+import {LoadScriptService} from '../services/load-script.service';
+
 
 
 @Component({
@@ -11,13 +13,23 @@ import {AJAXService} from '../ajax.service';
 export class NewsNavigationComponent implements OnInit {
 
     articles;
+    newsText;
+    title = 'Новости';
 
-  constructor(private AJAXService: AJAXService ) {
+  constructor(private AJAXService:AJAXService, private LoadScriptService: LoadScriptService) { }
 
-  }
-
-
+    @ViewChild('newsWrap') newsWrap: ElementRef;
   ngOnInit() {
+
+      document.querySelector('title').textContent = this.title;
+      this.AJAXService.getModules().then((data)=>{
+          this.newsText  = JSON.parse(this.AJAXService.getModule(data.json(),114)[0].params).customHtml;
+          this.newsWrap.nativeElement.innerHTML = this.newsText;
+
+
+
+      })
+
       this.AJAXService.getData().then((data) => {
           let dataJSON = data.json();
           this.articles = this.AJAXService.getNewsArticles(dataJSON).sort((a,b)=> b.id -a.id);
@@ -27,6 +39,21 @@ export class NewsNavigationComponent implements OnInit {
       })
 
   }
+
+
+    ngAfterViewChecked() {
+        let divs = document.querySelectorAll('.maretial-item');
+
+        if (divs.length > 0) {
+            this.LoadScriptService.initializeScript();
+        }
+
+    }
+
+    ngOnDestroy() {
+        this.LoadScriptService.removeScript();
+
+    }
 
 
 

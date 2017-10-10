@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import {AJAXService} from './ajax.service';
+import { Component, AfterContentInit } from '@angular/core';
+import {AJAXService} from './services/ajax.service';
+import {LoadScriptService} from './services/load-script.service';
 
 
 
@@ -13,18 +14,19 @@ import {AJAXService} from './ajax.service';
 
 
 export class AppComponent {
-    title = 'app works!';
     data;
     newsArticles;
-    constructor(private AJAXService: AJAXService) {
+    constructor(private AJAXService: AJAXService, private LoadScript: LoadScriptService) {
 
     }
 
 
 
+    ngAfterViewInit() {
 
+    }
 
-    ngOnInit() {
+    ngOnDestroy() {
 
     }
 

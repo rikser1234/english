@@ -1,0 +1,31 @@
+<app-banners></app-banners>
+<div class="teacher-component-wrap" #teacherWrap></div>
+<div class="advantages-component-wrap" #advantagesWrap></div>
+<section class="responses ">
+
+
+    <div class="container">
+        <h2 class="sect-title">Отзывы</h2>
+
+        <div class="responses-wrap">
+            <div class="responses-nav">
+                <div class="arrow-left"></div>
+                <div class="arrow-right"></div>
+            </div>
+        </div>
+
+
+        <div class="responses-slider">
+
+            <div class="responses-item" *ngFor="let response of responsesInfo">
+                <img class="responses-img" [src]="response.img" [alt]="response.resp_name"/>
+                <div class="responses-name">{{response.resp_name}}</div>
+                <div class="responses-text">{{response.resp_text}}</div>
+                <a class="responses-link" [href]="response.resp_link">Читать полностью</a>
+                        </div>
+
+
+
+                  </div>
+    </div>
+</section>

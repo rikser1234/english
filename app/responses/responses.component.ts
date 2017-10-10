@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef } from '@angular/core';
-import {AJAXService} from '../ajax.service';
+import {AJAXService} from '../services/ajax.service';
+import {ModuleSortService} from '../services/module-sort.service';
 
 @Component({
   selector: 'app-responses',
@@ -10,57 +11,25 @@ export class ResponsesComponent implements OnInit {
 
   moduleInfo: any;
   textData: any;
-  constructor(private AJAXService: AJAXService) { }
+  title = 'Отзывы';
+  constructor(private AJAXService: AJAXService, private ModuleSortService: ModuleSortService) { }
 
   @ViewChild('responsesWrap') responsesWrap: ElementRef;
 
   ngOnInit() {
+    document.querySelector('title').textContent = this.title;
     this.AJAXService.getModules().then((data)=> {
-      this.moduleInfo = JSON.parse(this.AJAXService.getModule(data.json())[0].params);
+      this.moduleInfo = JSON.parse(this.AJAXService.getModule(data.json(),98)[0].params);
 
-      let keys = [];
-
-      for (let key in this.moduleInfo) {
-        if (key.indexOf('img') > -1) {
-          keys.push(this.moduleInfo[key]);
-        }
-      }
-
-      let totalNumber = keys.filter((key)=> key !='' ).length;
-
-      let objects = [];
-      for (let i = 0; i < totalNumber; i++) {
-        objects.push({});
-      }
-      for (let key in this.moduleInfo) {
-        let keyNumber = parseInt(key[key.length - 1]) - 1;
-        if (objects[keyNumber]) {
-          if (key.indexOf('img') > -1) {
-            objects[keyNumber]['img'] = this.moduleInfo[key];
-          }
-
-          if (key.indexOf('resp_link') > -1) {
-            objects[keyNumber]['resp_link'] = this.moduleInfo[key];
-          }
+      this.textData = this.ModuleSortService.sortInfo(this.moduleInfo, ['img', 'resp_link', 'resp_name', 'resp_text' ]);
 
 
-          if (key.indexOf('resp_name') > -1) {
-            objects[keyNumber]['resp_name'] = this.moduleInfo[key];
-          }
-
-          if (key.indexOf('resp_text') > -1) {
-            objects[keyNumber]['resp_text'] = this.moduleInfo[key];
-          }
-        }
-      }
-
-
-      this.textData = objects;
 
     })
   }
 
   ngAfterViewChecked() {
+
 
     for (let i = 0; i < this.responsesWrap.nativeElement.children.length; i++) {
       setTimeout(()=>{

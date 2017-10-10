@@ -1,0 +1,25 @@
+
+
+
+
+<section class="banners ">
+
+  <div class="banners-item" *ngFor="let banner of bannerObjectData" [style.background-image]="'url(' + banner.img + ')'">
+    <div class="container">
+    <div class="banner-text">
+      <div class="banner-title">
+        {{banner.banner_title}}
+      </div>
+      <div class="banner-descr">
+        {{banner.banner_descr}}
+      </div>
+      <a class="btn red-btn" [routerLink]="banner.banner_link">Узнать подробнее</a>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+
+
+
